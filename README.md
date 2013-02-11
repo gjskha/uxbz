@@ -1,4 +1,4 @@
 uxbz
 ====
 
-Repository for ux.bz
+url shortener software, built with Swiftlet, Bootstrap, MongoDB, etc.  
