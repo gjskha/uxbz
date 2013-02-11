@@ -12,8 +12,8 @@ class Get extends \Swiftlet\Controller {
 
         // make sure shortUrl is only alnum
 
-        $shorterUrlModel = $this->app->getModel("ShorterUrl");
-        $longUrl = $shorterUrlModel->getLongerUrl($shortUrl);
+        $urlModel = $this->app->getModel("Url");
+        $longUrl = $urlModel->getLongerUrl($shortUrl);
 
         if (isset($longUrl)) {
             // redirect
@@ -27,7 +27,6 @@ class Get extends \Swiftlet\Controller {
                 header("HTTP/1.1 404 Not Found");
                 header("Status: 404 Not Found");
             }
-            //notImplemented(); 
         }
     }
 }

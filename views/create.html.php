@@ -1,5 +1,4 @@
 <?php require 'includes/header.html.php' ?>
-<p>
 <div class="container">
       <form class="form-signin" action="index.php?q=link" method="POST">
         <h2 class="form-signin-heading"><?php echo $this->get('pageTitle') ?></h2>
@@ -8,6 +7,4 @@
       </form>
 
     </div> <!-- /container -->
-</p>
-
 <?php require 'includes/footer.html.php' ?>

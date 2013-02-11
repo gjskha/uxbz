@@ -12,8 +12,8 @@ class Dump extends \Swiftlet\Controller
         $navigation = $this->app->getModel('navigation')->Navbar("Dump");
         $this->view->set('navigation', $navigation);
 
-        $shorterUrlModel = $this->app->getModel('ShorterUrl');
-        $dump = $shorterUrlModel->dumpRecords();
+        $urlModel = $this->app->getModel('Url');
+        $dump = $urlModel->dumpRecords();
         $this->view->set('dump', $dump);
     }
 }
