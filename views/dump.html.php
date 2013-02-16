@@ -2,15 +2,15 @@
 <div class="container">
 <div class="view-content">
 <h2 class="form-signin-heading"><?php echo $this->get('pageTitle') ?></h2>
-<table class="dump">
-<tr>
-<td>
+<table class="table table-striped dump">
+<thead>
+<th>
 <strong>Redirect</strong>
-</td>
-<td>
+</th>
+<th>
 <strong>Original Url</strong>
-</td>
-<tr>
+</th>
+</thead>
 <?php foreach($this->get('dump') as $record) { ?>
 <tr>
 <td>
@@ -22,6 +22,21 @@
 </tr>      
 <?php } ?>
 </table>
+<?php $pages = $this->get('pages'); ?>
+<?php if ($pages['prevPage'] > 0 ) { ?>
+<a href="?pg=
+<?php echo $pages['prevPage'] ?>
+">&larr;</a>
+<?php } ?>
+page 
+<?php echo $pages['wantedPage'] . " of " . $pages['totalPages']; ?>
+
+<?php if ($pages['nextPage'] < $pages['totalPages'] ) { ?>
+<a href="?pg=
+<?php echo $pages['nextPage'] ?>
+">&rarr;</a>
+<?php } ?>
+
 </div>
 </div>
 <?php require 'includes/footer.html.php' ?>

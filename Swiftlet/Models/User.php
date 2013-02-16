@@ -4,11 +4,15 @@ namespace Swiftlet\Models;
 
 class User extends \Swiftlet\Model
 {
-    /**
-      *
-      *
-      */
-    public function displayUserInfo($shortUrl) {
+   /*
+    *
+    *
+    */
+    public function setLocation($shortUrl) {
+        return "place holder";
+    }
+
+    public function getLocation($shortUrl) {
         return "place holder";
     }
 

@@ -2,23 +2,23 @@
 
 namespace Swiftlet\Controllers;
 
-class Link extends \Swiftlet\Controller
-{
+class Link extends \Swiftlet\Controller {
+
     protected $title = "Your link is ready!";
 		
-    public function index()
-    {
-        $longUrl = $_POST["longUrl"]; 
+    public function index() {
+
+        $longUrl = $_POST["longUrl"];
         // make sure POSTed variable is a proper URL
         $validator = $this->app->getModel("Validation");
-        if ($validator->validUrl($longUrl)) { 
+        if ($validator->Url($longUrl)) { 
             // Create a shorter link
             $urlModel = $this->app->getModel("Url");
             $result = $urlModel->setShorterUrl($longUrl);
             $this->view->set('shortUrl', $result["shortUrl"]);
             $this->view->set('longUrl', $result["longUrl"]);
         } else {
-            $this->view->set('error', "Not a valid URL.");
+            $this->view->set('error', "Not a valid URL. Make sure you include a scheme (such as 'http://') and a real tld (such as '.com')");
         }
     }
 }

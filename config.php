@@ -1,11 +1,21 @@
 <?php
+
+/* configurable variables go here. */
+
 /* name of the website */
-ini_set('display_errors', 1);
 $app->setConfig('siteName', 'UX.BZ');
+$app->setConfig('siteHost', 'localhost');
+
+/* database information */
+$app->setConfig('dbName', 'urls');
+
 /* entries on the navigation bar */
-$myToc = array( 
-    "Login" => "login",
-    "Create" => "create",
-    "About" => "about",
-      "Dump" => "dump" );
-$app->setConfig('myToc', $myToc);
+$app->setConfig('myToc', 
+     array('Login' => 'login',
+          'Create' => 'create',
+           'About' => 'about',
+           'Abuse' => 'abuse',
+            'Dump' => 'dump' ));
+
+/* entries per screen for tabular data */
+$app->setConfig('itemsPerPage', 10);
