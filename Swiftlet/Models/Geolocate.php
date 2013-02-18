@@ -19,8 +19,10 @@ class Geolocate extends \Swiftlet\Model
         $this->getCollection('userInformation')->insert($obj);
         */
          
-        $ipAddr = '4.5.6.7'; //testing 
+        $tArray = array('24.48.56.12', '24.24.24.24','1.2.3.4', '88.88.88.88', '44.44.44.44', '4.5.6.7'); //testing 
 
+        $ipAddr = $tArray[array_rand($tArray)];
+ 
         $geoip = \Net_GeoIP::getInstance('/var/www/uxbz/data/GeoLiteCity.dat'); 
   
         $location = $geoip->lookupLocation($ipAddr);           
@@ -30,6 +32,7 @@ class Geolocate extends \Swiftlet\Model
             'shortUrl' => $shortUrl,
             'countryName' => $location->countryName,
             'city' => $location->city,
+            'time' => new \MongoDate(),
             'latitude' => $location->latitude,
             'longitude' => $location->longitude 
         );

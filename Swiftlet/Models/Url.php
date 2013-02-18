@@ -3,7 +3,6 @@
 /* Url is the model class for our collection of URL redirects */
 
 namespace Swiftlet\Models;
-use \Mongo;
 
 class Url extends \Swiftlet\Model {
 
@@ -29,7 +28,7 @@ class Url extends \Swiftlet\Model {
       * params: none
       * returns: an associative array
       */
-    public function dumpRecords($page = 1) {
+    public function dumpRecords($page = 1, $sort = 'time', $order = -1) {
 
         $collection = $this->getCollection();
         $count = $collection->find()->count();
@@ -39,11 +38,12 @@ class Url extends \Swiftlet\Model {
         $cursor = $collection->find();
         $cursor->limit($this->app->getConfig('itemsPerPage'));
         $cursor->skip($pages['skip']);
-        $cursor->sort(array('longUrl' => -1)); //revers-alphabetical, need date rather
+        // 1, -1 asc desc
+        $cursor->sort(array($sort => $order));
 
         $dump = array();
         foreach ($cursor as $obj) {
-            array_push($dump, array('longUrl' => $obj['longUrl'], 'shortUrl' => $obj['shortUrl']));
+            array_push($dump, array('time' => $obj['time'], 'longUrl' => $obj['longUrl'], 'shortUrl' => $obj['shortUrl']));
         }
 
         array_push($dump, $pages);
@@ -61,7 +61,7 @@ class Url extends \Swiftlet\Model {
            while ($this->getCollection()->findOne(array('shortUrl' => $shortUrl))) { 
                $shortUrl = $this->generateCandidate();
            }
-           $obj = array('shortUrl' => $shortUrl, 'longUrl' => $longUrl);
+           $obj = array('shortUrl' => $shortUrl, 'longUrl' => $longUrl, 'time' => new \MongoDate);
            $inserter = $this->getCollection();
            $inserter->insert($obj);
            // error handling
@@ -85,13 +85,12 @@ class Url extends \Swiftlet\Model {
         $table = array( 'a','b','c','d','e','f','g',
                         'h','i','j','k','l','m','n',
                         'o','p','q','r','s','t','u',
-                        'v','w','x','y','z','-','_',
+                        'v','w','x','y','z','_','0',
                         'A','B','C','D','E','F','G',
                         'H','I','J','K','L','M','N',
                         'O','P','Q','R','S','T','U',
                         'V','W','X','Y','Z','1','2', 
-                        '3','4','5','6','7','8','9',
-                        '0' );
+                        '3','4','5','6','7','8','9', );
 
         $random_length = rand (2,5);
 

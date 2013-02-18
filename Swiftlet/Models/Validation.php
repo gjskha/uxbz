@@ -13,7 +13,7 @@ class Validation extends \Swiftlet\Model {
     }
 
     public function Number($input) {
-        if(!filter_var($input, FILTER_VALIDATE_NUMBER)) {
+        if(!filter_var($input, FILTER_VALIDATE_INT)) {
             return 0;
         } else {
             return 1;

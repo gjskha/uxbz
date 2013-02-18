@@ -5,16 +5,29 @@
 <table class="table table-striped dump">
 <thead>
 <th>
+<i class="icon-chevron-down"></i> 
+<strong>Hits</strong>
+</th>
+<th>
 <strong>Redirect</strong>
 </th>
 <th>
 <strong>Original Url</strong>
 </th>
+<th>
+<strong>Created At</strong>
+</th>
 </thead>
 <?php foreach($this->get('dump') as $record) { ?>
 <tr>
 <td>
+num
+</td>
+<td>
 <a href="<?php echo $record["shortUrl"] ?>"><?php echo $record["shortUrl"] ?></a>
+</td>
+<td>
+<?php echo date('Y-M-d h:i:s', $record["time"]->sec) ?>
 </td>
 <td>
 <?php echo $record["longUrl"] ?>

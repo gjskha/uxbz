@@ -10,6 +10,7 @@
 <link href='http://fonts.googleapis.com/css?family=Wendy+One' rel='stylesheet' type='text/css'>
 		<link type="text/css" rel="stylesheet" href="<?php echo $this->app->getRootPath() ?>views/css/layout.css"/>
 		<script src="<?php echo $this->app->getRootPath() ?>views/js/bootstrap.js"></script>
+		<script src="<?php echo $this->app->getRootPath() ?>views/js/jquery-1.9.1.js"></script>
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -49,3 +50,5 @@
         </div>
       </div>
     </div>
+
+
