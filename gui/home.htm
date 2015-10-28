@@ -1,0 +1,17 @@
+<p>This simple and tiny program should give you an idea of how easy it is to design and write an application using Fat-Free. Please refer to the <a href="http://fatfree.sourceforge.net" onclick="{{ @extlink }}">documentation</a>, this program's source code (index.php), and associated HTML templates for more information. The files contain a lot of inline documentation to help you understand how the application works and how the code interacts with the framework.</p>
+
+<p>Enter the target URL in the space below.</p>
+
+<form name="blog" method="post" action="{{ @BASE }}/" >
+	<F3:check if="{{ @message }}">
+		<p><span class="fail">{{ @message }}</span></p>
+	</F3:check>
+	<dl>
+		<dt><label for="long">Long URL</label></dt>
+		<dd><input type="text" name="long" id="long" value="{{ @POST.long }}" size="60"/></dd>
+		<p/>
+		<dd><input type="submit" value="Submit"/></dd>
+	</dl>
+</form>
+
+<p/>
